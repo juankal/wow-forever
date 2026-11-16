@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#101412" />
+    <meta
+      name="description"
+      content="El cuartel de Juankal: equipo, misiones y prioridades de tu paladín en WoW Forever."
+    />
+    <title>Juankal · WoW Forever</title>
+    <link rel="icon" href="./assets/crest.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./assets/styles.css" />
+    <link rel="modulepreload" href="./assets/data.js" />
+    <link rel="modulepreload" href="./assets/model.js" />
+    <script type="module" src="./assets/app.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Ir al contenido</a>
+    <div class="app-shell">
+      <aside id="sidebar" aria-label="Navegación principal">
+        <a class="brand" href="#home"
+          ><img src="./assets/crest.svg" width="42" height="50" alt="" /><span
+            ><strong>FOREVER</strong><small>EL DIARIO DE JUANKAL</small></span
+          ></a
+        >
+        <div class="sidebar-character">
+          <span class="avatar">J</span>
+          <div>
+            <b id="sidebarName">Juankal</b
+            ><small id="sidebarInfo">Paladín · Nivel 60</small>
+          </div>
+          <span class="status-dot" title="Registro local"></span>
+        </div>
+        <nav id="nav" aria-label="Secciones"></nav>
+        <div class="sidebar-footer">
+          <span class="status-dot"></span> Tu progreso, a tu ritmo.<small
+            >Registro personal · sin conexión al juego</small
+          >
+        </div>
+      </aside>
+      <button
+        id="menuScrim"
+        class="menu-scrim"
+        aria-label="Cerrar navegación"
+        hidden
+      ></button>
+      <div class="workspace">
+        <header class="topbar">
+          <div class="breadcrumb">
+            <button
+              id="menuToggle"
+              class="icon-button mobile"
+              aria-label="Abrir navegación"
+              aria-expanded="false"
+              aria-controls="sidebar"
+            >
+              ☰</button
+            ><span>CUARTEL DEL PALADÍN</span><span class="slash">/</span
+            ><b id="pageLabel">Dashboard</b>
+          </div>
+          <div class="headeractions">
+            <span id="saveStatus" class="save-status" aria-live="polite"
+              >Guardado local</span
+            ><button id="exportBtn" title="Descargar un respaldo JSON">
+              ↓ <span>Exportar</span></button
+            ><button id="importBtn" title="Importar respaldo JSON">
+              ↑ <span>Importar</span></button
+            ><input
+              type="file"
+              accept="application/json,.json"
+              id="importFile"
+              hidden
+            />
+          </div>
+        </header>
+        <main id="main" tabindex="-1"></main>
+        <footer class="page-footer">
+          <span>JUANKAL <span class="gold">✦</span> WOW FOREVER</span
+          ><span>Hecho para disfrutar el camino.</span>
+        </footer>
+      </div>
+    </div>
+    <dialog id="modal" aria-labelledby="modalTitle">
+      <div id="modalContent"></div>
+    </dialog>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <noscript
+      ><p class="note">
+        Activa JavaScript para utilizar el diario. Los datos se guardan
+        únicamente en este navegador.
+      </p></noscript
+    >
+  </body>
+</html>

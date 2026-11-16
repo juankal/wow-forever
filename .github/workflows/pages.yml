@@ -1,0 +1,57 @@
+name: Verificar y publicar en GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+          cache: npm
+      - name: Instalar herramientas de desarrollo
+        run: npm ci --no-audit --no-fund
+      - name: Preparar Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Comprobar JavaScript y lógica de datos
+        run: npm run check
+      - name: Probar escritorio y móvil
+        run: npm run test:e2e
+      - name: Preparar sitio estático
+        run: npm run build
+      - name: Empaquetar sitio
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist
+
+  deploy:
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    needs: verify
+    permissions:
+      pages: write
+      id-token: write
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Configurar Pages
+        uses: actions/configure-pages@v5
+      - name: Publicar
+        id: deployment
+        uses: actions/deploy-pages@v4
