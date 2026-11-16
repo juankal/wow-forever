@@ -2,7 +2,8 @@
 
 Diario personal del paladín Juankal en Ashenlight. Aplicación estática en español, con diseño oscuro, navegación para escritorio y móvil y almacenamiento en el navegador.
 
-**Aplicación:** [juankal.github.io/wow-forever](https://juankal.github.io/wow-forever/)  
+**Aplicación:** [juankal.github.io/wow-forever](https://juankal.github.io/wow-forever/)
+
 **Repositorio:** [juankal/wow-forever](https://github.com/juankal/wow-forever)
 
 ## Funciones
@@ -49,6 +50,8 @@ npm run build
 ```
 
 Las pruebas cubren períodos diarios/semanales, zonas horarias, persistencia, validación y restauración de respaldos, almacenamiento bloqueado/corrupto, cambios de equipo, misiones, Reals, DPS, formularios, navegación e inexistencia de desbordamiento horizontal en escritorio y móvil. Los screenshots se guardan en `test-results/` y no se versionan.
+
+La suite incluye 7 pruebas de lógica y 30 pruebas de navegador (15 flujos en escritorio y 15 en móvil), incluida la compresión y persistencia de capturas.
 
 ## Estructura
 
